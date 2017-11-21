@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+ 	<class name="com.model.Grade" table="grade">
+ 		<!-- id值 -->
+ 		<id name="id" column="id" type="string">
+            <generator class="native"></generator>
+		</id>
+		
+		<property name="usual_Grade" type="int">
+			<column name="usual_Grade"/>
+		</property>
+		
+		<property name="mid_Grade" type="int">
+			<column name="mid_Grade"/>
+		</property>
+		
+		<property name="final_Grade" type="int">
+			<column name="final_Grade"/>
+		</property>
+		
+		<property name="experiment_Grade" type="int">
+			<column name="experiment_Grade"/>
+		</property>
+ 	</class>
+ </hibernate-mapping>
