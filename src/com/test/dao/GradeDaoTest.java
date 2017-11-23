@@ -1,4 +1,4 @@
-package com.test;
+package com.test.dao;
 
 
 import org.junit.Before;
@@ -16,7 +16,12 @@ public class GradeDaoTest {
 	    GradeDao gradeDao=new GradeDao();
 		@Before
 		public void setUp() throws Exception {
-			 grade=new Grade(usual_Grade,mid_Grade,final_Grade,experiment_Grade);
+			 grade=new Grade();
+			 grade.setId("123");
+			 grade.setUsual_Grade(usual_Grade);
+			 grade.setMid_Grade(mid_Grade);
+			 grade.setFinal_Grade(final_Grade);
+			 grade.setExperiment_Grade(experiment_Grade);
 		}
 		
 

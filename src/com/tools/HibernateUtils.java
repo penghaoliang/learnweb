@@ -1,6 +1,7 @@
 package com.tools;
 
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -11,36 +12,49 @@ import org.hibernate.service.ServiceRegistryBuilder;
  * @author lyq
  */
 public class HibernateUtils {
-	private static SessionFactory factory;	//定义Session工厂
-	//静态块用于实例化Session工厂
-	static{
-		Configuration cfg = new Configuration().configure();
-        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(cfg.getProperties()).buildServiceRegistry();
-        factory = cfg.buildSessionFactory(serviceRegistry);
-	}
-	/**
-	 * 获取Session工厂
-	 * @return SessionFactory
-	 */
-	public static SessionFactory getSessionFactory(){
-		return factory;
-	}
-	/**
-	 * 获取Session
-	 * @return Session
-	 */
-	public static Session getSession(){
-		return factory.openSession();
-	}
-	/**
-	 * 关闭Session释放资源
-	 * @param session
-	 */
-	public static void closeSession(Session session){
-		if(session != null){
-			if(session.isOpen()){
-				session.close();
-			}
-		}
-	}
+	 public static final SessionFactory sessionFactory;  
+	  //创建sessionFactory  
+	  static  
+	  {  
+	      try  
+	      {  
+	          // 采用默认的hibernate.cfg.xml来启动一个Configuration的实例  
+	    	  Configuration config=new Configuration().configure();
+	          ServiceRegistry serviceRegistry =new ServiceRegistryBuilder().applySettings(config.getProperties()).buildServiceRegistry();
+	          sessionFactory=config.buildSessionFactory(serviceRegistry);  
+	      }  
+	      catch (Throwable ex)  
+	      {  
+	          System.err.println("Initial SessionFactory creation failed." + ex);  
+	          throw new ExceptionInInitializerError(ex);  
+	      }  
+	  }  
+
+	  // ThreadLocal可以隔离多个线程的数据共享，因此不再需要对线程同步  
+	  public static final ThreadLocal<Session> session  
+	      = new ThreadLocal<Session>();  
+	  //创建Session  
+	  public static Session currentSession()  
+	      throws HibernateException  
+	  {  
+	      //通过线程对象.get()方法安全创建Session  
+	      Session s = session.get();  
+	      // 如果该线程还没有Session,则创建一个新的Session  
+	      if (s == null)  
+	      {  
+	          s = sessionFactory.openSession();  
+	          // 将获得的Session变量存储在ThreadLocal变量session里  
+	          session.set(s);  
+	      }  
+	      return s;  
+	  }  
+	  //关闭Session  
+	  public static void closeSession()  
+	      throws HibernateException  
+	  {  
+	      Session s = session.get();  
+	      if (s != null)  
+	          s.close();  
+	      session.set(null);  
+	  }  
 }

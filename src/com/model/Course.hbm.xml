@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+ 	<class name="com.model.Course" table="course">
+ 		<!-- id值 -->
+ 		<id name="id" column="id" type="string">
+            <generator class="assigned"/>
+		</id>
+		
+		<property name="coursenum" type="int">
+			<column name="coursenum"/>
+		</property>
+		
+		<property name="date" type="java.util.Date">
+			<column name="date"/>
+		</property>
+        	
+        <set name="students" cascade="save-update" inverse="true">
+            <!-- key配置的是子表的外键列名 -->
+            <key column="course_id"></key>
+            <!-- one-to-many标签声明关联关系是一对多，class指定多方的实体类类型 -->
+            <one-to-many class="com.model.Student" />
+        </set>
+         <many-to-one name="teacher" class="com.model.Teacher">
+            <!-- column标签指定关联外键，还是子表的外键列名 -->
+            <column name="teacher_id"></column>
+        </many-to-one>
+ 	</class>
+</hibernate-mapping>

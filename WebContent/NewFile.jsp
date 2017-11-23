@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script language="javascript" src="JS/AjaxRequest.js"></script>	
 <script
 	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
 <script
@@ -13,9 +14,10 @@
 <script
 	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 <script>
+
 $.validator.setDefaults({
-    submitHandler: function() {
-      alert("提交事件!");
+    submitHandler: function(form) {
+        form.submit();
     }
 });
 $().ready(function() {
@@ -24,7 +26,15 @@ $().ready(function() {
 		  rules: {
 			  user:{
 				  required:true,
-				  minlength: 6				  
+				  minlength: 6,
+			        remote:{                                          //验证用户名是否存在
+			               type:"POST",
+			               url:"LoginServlet.do",             //servlet
+			               data:{
+			            	  action:'verifyUser',
+			            	   user:function(){return $("#user").val();}
+			               } 
+			           } 
 			  },
 			  pwd: { 
 				  required: true, 
@@ -32,7 +42,7 @@ $().ready(function() {
 				  maxlength: 18 
 				  }, 
 			  repwd: { 
-				  equalTo:"#password" 
+				  equalTo:"#pwd" 
 				  }, 
 			email: { 
 					  required: true, 
@@ -43,7 +53,15 @@ $().ready(function() {
 			     },
 			number:{
 				  required: true,
-				  minlength: 6
+				  minlength: 6,
+			       remote:{                                          
+			               type:"POST",
+			               url:"LoginServlet.do",    
+			               data:{
+			            	   action:'verifyNumber',
+			            	   number:function(){return $("#number").val();}
+			               } 
+			           } 
 				  },
 			identity:{
 				  required: true		  
@@ -53,6 +71,7 @@ $().ready(function() {
 	    	  user:{
 	    		  required: "请输入用户名",
 	    		  minlength: "不能少于6个字符", 
+	    		  remote:"用户名已存在"
 	    	  },
 	    		  // email 
 	    	  email: { 
@@ -72,7 +91,8 @@ $().ready(function() {
 				     },
 			 number:{
 					  required: "请输入学号",
-					  minlength: "请输入正确的学号"
+					  minlength: "请输入正确的学号",
+					  remote:"已存在"
 					  },
 			identity:{
 					  required: "请选择"		  
@@ -88,7 +108,8 @@ $().ready(function() {
 </style>
 </head>
 <body>
-	<form name="form1" id="form1" action="" method="post">
+
+	<form name="form1" id="form1" action="LoginServlet.do?action=loginUser" method="post">
 		<table width="100%" height="100%" border="0" cellpadding="0"
 			cellspacing="0" bgcolor="#FEFEFC">
 			<tr>
@@ -105,12 +126,12 @@ $().ready(function() {
 									border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFEF9">
 									<tr>
 										<td width="93" height="40" align="right">用户名：</td>
-										<td height="40" align="left"><input name="user"
+										<td height="40" align="left"><input name="user" id="user"
 											type="text"></td>
 									</tr>
 									<tr>
 										<td height="40" align="right">密码：</td>
-										<td height="40" align="left"><input name="pwd"
+										<td height="40" align="left"><input name="pwd" id="pwd"
 											type="password" ></td>
 									</tr>
 									<tr>
@@ -125,7 +146,7 @@ $().ready(function() {
 									</tr>
 									<tr>
 										<td height="40" align="right">学号/工号：</td>
-										<td height="40" align="left"><input name="number"
+										<td height="40" align="left"><input name="number" id="number"
 											type="text" id="answer" size="35"></td>
 									</tr>
 									<tr>

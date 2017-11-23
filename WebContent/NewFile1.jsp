@@ -1,129 +1,261 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>Insert title here</title>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-<script>
-$.validator.setDefaults({
-    submitHandler: function() {
-      alert("提交事件!");
-    }
-});
-$().ready(function() {
-// 在键盘按下并释放及提交后验证提交表单
-  $("#signupForm").validate({
-	    rules: {
-	      firstname: "required",
-	      lastname: "required",
-	      username: {
-	        required: true,
-	        minlength: 2
-	      },
-	      password: {
-	        required: true,
-	        minlength: 5
-	      },
-	      confirm_password: {
-	        required: true,
-	        minlength: 5,
-	        equalTo: "#password"
-	      },
-	      email: {
-	        required: true,
-	        email: true
-	      },
-	      "topic[]": {
-	        required: "#newsletter:checked",
-	        minlength: 2
-	      },
-	      agree: "required"
-	    },
-	    messages: {
-	      firstname: "请输入您的名字",
-	      lastname: "请输入您的姓氏",
-	      username: {
-	        required: "请输入用户名",
-	        minlength: "用户名必需由两个字母组成"
-	      },
-	      password: {
-	        required: "请输入密码",
-	        minlength: "密码长度不能小于 5 个字母"
-	      },
-	      confirm_password: {
-	        required: "请输入密码",
-	        minlength: "密码长度不能小于 5 个字母",
-	        equalTo: "两次密码输入不一致"
-	      },
-	      email: "请输入一个正确的邮箱",
-	      agree: "请接受我们的声明",
-	      topic: "请选择两个主题"
-	    }
-	});
-});
-</script>
-<style>
-.error{
-	color:red;
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script language="javascript" src="JS/AjaxRequest.js"></script>		
+<script language="javascript" src="JS/wghFunction.js"></script>	
+<script language="javascript">
+//显示用户注册页面
+function Regopen(divID){
+    var notClickDiv=document.getElementById("notClickDiv");	//获取id为notClickDiv的层
+	 notClickDiv.style.display='block';						//设置层显示
+	  document.getElementById("notClickDiv").style.width=document.body.clientWidth+"px";
+	  document.getElementById("notClickDiv").style.height=document.body.clientHeight+"px";
+	divID=document.getElementById(divID);	//根据传递的参数获取操作的对象
+	divID.style.display='block';			//显示用户注册页面
+	divID.style.left=(document.body.clientWidth-663)/2+"px";		//设置页面的左边距
+	divID.style.top=(document.body.clientHeight-441)/2+"px";		//设置页面的顶边距
 }
-</style>
-</head>
-<body>
-<form class="cmxform" id="signupForm" method="get" action="">
-  <fieldset>
-    <legend>验证完整的表单</legend>
-    <p>
-      <label for="firstname">名字</label>
-      <input id="firstname" name="firstname" type="text">
-    </p>
-    <p>
-      <label for="lastname">姓氏</label>
-      <input id="lastname" name="lastname" type="text">
-    </p>
-    <p>
-      <label for="username">用户名</label>
-      <input id="username" name="username" type="text">
-    </p>
-    <p>
-      <label for="password">密码</label>
-      <input id="password" name="password" type="password">
-    </p>
-    <p>
-      <label for="confirm_password">验证密码</label>
-      <input id="confirm_password" name="confirm_password" type="password">
-    </p>
-    <p>
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email">
-    </p>
-    <p>
-      <label for="agree">请同意我们的声明</label>
-      <input type="checkbox" class="checkbox" id="agree" name="agree">
-    </p>
-    <p>
-      <label for="newsletter">我乐意接收新信息</label>
-      <input type="checkbox" class="checkbox" id="newsletter" name="newsletter">
-    </p>
-    <fieldset id="newsletter_topics">
-      <legend>主题 (至少选择两个) - 注意：如果没有勾选“我乐意接收新信息”以下选项会隐藏，但我们这里作为演示让它可见</legend>
-      <label for="topic_marketflash">
-        <input type="checkbox" id="topic_marketflash" value="marketflash" name="topic[]">Marketflash
-      </label>
-      <label for="topic_fuzz">
-        <input type="checkbox" id="topic_fuzz" value="fuzz" name="topic[]">Latest fuzz
-      </label>
-      <label for="topic_digester">
-        <input type="checkbox" id="topic_digester" value="digester" name="topic[]">Mailing list digester
-      </label>
-      <label for="topic" class="error" style="display:none">至少选择两个</label>
-    </fieldset>
-    <p>
-      <input class="submit" type="submit" value="提交">
-    </p>
-  </fieldset>
-</form>
-</body>
-</html>
+//隐藏用户注册页面
+function Myclose(divID){
+	document.getElementById(divID).style.display='none';	//隐藏用户注册页面
+    //设置id为notClickDiv的层隐藏
+	 document.getElementById("notClickDiv").style.display='none';	
+}
+</script>	
+<script language="javascript">
+var flag_user=true;		//记录用户是否合法
+var flag_pwd=true;			//记录密码是否合法
+var flag_repwd=true;		//确认密码是否通过
+var flag_email=true;		//记录E-mail地址是否合法
+var flag_question=true;	//记录密码提示问题是否输入
+var flag_answer=true;		//记录提示问题答案是否输入
+//验证用户名是否合法，并且未被注册
+function checkUser(str){
+	if(str==""){			//当用户名为空时
+		document.getElementById("div_user").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px;text-align:center'>请输入用户名！</div></td>";//设置提示文字
+		document.getElementById("tr_user").style.display='block';	//显示提示信息
+		flag_user=false;
+	}else if(!checkeUser(str)){	//判断用户名是否符合要求
+		document.getElementById("div_user").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>您输入的用户名不合法！</div></td>";
+		document.getElementById("tr_user").style.display='block';		//显示提示信息
+		flag_user=false;
+	}else{		//进行异步操作，判断用户名是否被注册
+//		var loader=new net.AjaxRequest("UserServlet?action=checkUser&username="+str+"&nocache="+new Date().getTime(),deal,onerror,"GET");
+	}	
+}
+function deal(){
+	result=this.req.responseText;								//获取返回的检测结果
+	result=result.replace(/\s/g,"");								//去除Unicode空白符
+	if(result=="1"){											//当用户名没有被注册
+		document.getElementById("div_user").innerHTML="";		//清空提示文字
+		document.getElementById("tr_user").style.display='none';		//隐藏提示信息显示行
+		flag_user=true;		
+	}else{												//当用户名已经被注册
+		document.getElementById("div_user").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>"+result+"</div></td>";
+		document.getElementById("tr_user").style.display='block';		//显示提示信息
+		flag_user=false;
+	}
+	
+}
+
+/*************************************************************************************************************/
+//验证密码
+function checkPwd(str){
+	if(str==""){		//当密码为空时
+		document.getElementById("div_pwd").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>请输入密码！</div></td>";
+		document.getElementById("tr_pwd").style.display='block';		//显示提示信息
+		flag_pwd=false;
+	}else if(!checkePwd(str)){		//当密码不合法时
+		document.getElementById("div_pwd").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>您输入的密码不合法！</div></td>";
+		document.getElementById("tr_pwd").style.display='block';	//显示提示信息
+		flag_pwd=false;
+	}else{		//当密码合法时
+		document.getElementById("div_pwd").innerHTML="";	//清空提示文字
+		document.getElementById("tr_pwd").style.display='none';		//隐藏提示信息显示行
+		flag_pwd=true;
+	}
+}
+//验证确认密码是否正确
+function checkRepwd(str){
+	if(str==""){		//当确认密码为空时
+		document.getElementById("div_pwd").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>请确认密码！</div></td>";
+		document.getElementById("tr_pwd").style.display='block';	//显示提示信息
+		flag_repwd=false;
+	}else if(form1.pwd.value!=str){		//当确认密码与输入的密码不一致时
+		document.getElementById("div_pwd").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>两次输入的密码不一致！</div></td>";
+		document.getElementById("tr_pwd").style.display='block';	//显示提示信息
+		flag_repwd=false;
+	}else{	//当两次输入的密码一致时
+		document.getElementById("div_pwd").innerHTML="";	//清空提示文字
+		document.getElementById("tr_pwd").style.display='none';		//隐藏提示信息显示行
+		flag_repwd=true;
+	}
+}
+//验证E-mail地址
+function checkEmail(str){
+	if(str==""){//当E-mail地址为空时
+		document.getElementById("div_email").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>请输入E-mail地址！</div></td>";
+		document.getElementById("tr_email").style.display='block';		//显示提示信息
+		flag_email=false;
+	}else if(!checkemail(str)){//当E-mail地址不合法时
+		document.getElementById("div_email").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>您输入的E-mail地址不正确！</div></td>";
+		document.getElementById("tr_email").style.display='block';		//显示提示信息
+		flag_email=false;
+	}else{
+		document.getElementById("div_email").innerHTML="";//清空提示信息
+		document.getElementById("tr_email").style.display='none';//不显示提示信息
+		flag_email=true;	
+	}
+}
+//验证提示问题答案
+function checkQuestion(str_q,str_a){
+	if(str_q!="" && str_a==""){//当密码提示问题不为空，而提示问题答案为空时
+		document.getElementById("div_answer").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>请输入提示问题答案！！</div></td>";
+		document.getElementById("tr_answer").style.display='block';		//显示提示信息
+		flag_answer=false;
+	}else if(str_q=="" && str_a !=""){//当密码提示问题为空，而提示问题答案不为空时
+		document.getElementById("div_question").innerHTML="<td height='40' colspan='2' align='center'><div  style='border:#FF6600 1px solid; color:#FF0000; width:90%; height:29px; padding-top:8px'>请输入密码提示问题！</div></td>";
+		document.getElementById("tr_question").style.display='block';	//显示提示信息
+		flag_question=false;
+	}else{
+		document.getElementById("div_answer").innerHTML="";//清空提示信息
+		document.getElementById("div_question").innerHTML="";//清空提示信息
+		document.getElementById("tr_answer").style.display='none';	//不显示提示信息
+		document.getElementById("tr_question").style.display='none';//不显示提示信息
+		flag_answer=true;
+		flag_question=true;
+	}
+}	
+</script>
+<script language="javascript">
+//保存用户注册信息
+function save(){
+	if(form1.user.value==""){		//当用户名为空时
+		alert("请输入用户名！");form1.user.focus();return;
+	}
+	if(form1.pwd.value==""){		//当密码为空时
+		alert("请输入密码！");form1.pwd.focus();return;
+	}
+	if(form1.repwd.value==""){		//当没有输入确认密码时
+		alert("请确认密码！");form1.repwd.focus();return;
+	}
+	if(form1.email.value==""){		//当E-mail地址为空时
+		alert("请输入E-mail地址！");form1.email.focus();return;
+	}
+	if(flag_user && flag_pwd && flag_repwd && flag_email && flag_question && flag_answer){	//所有数据都符合要求时
+		var param="user="+form1.user.value+"&pwd="+form1.pwd.value+"&email="+form1.email.value+"&question="+
+		form1.question.value+"&answer="+form1.answer.value+"&city="+form1.city.value; 		//组合参数
+		var loader=new net.AjaxRequest("UserServlet?action=save&nocache="+new Date().getTime(),deal_save,onerror,"POST",param);
+	}else{
+		alert("您填写的注册信息不合法，请确认！");
+	}
+}
+function deal_save(){
+	alert(this.req.responseText);		//弹出提示信息
+	form_reset(form1);		//重置表单
+	Myclose("register");	//隐藏用户注册页面
+	
+}
+/*************************************************************************************************************/
+function onerror(){		//错误处理函数
+	alert("出错了");
+}
+//重置表单函数
+function form_reset(form){
+	form.reset();		//重置表单
+	getProvince();		//获取省和直辖市
+	document.getElementById("tr_user").style.display='none';
+	document.getElementById("tr_pwd").style.display='none';
+	document.getElementById("tr_email").style.display='none';
+	document.getElementById("tr_question").style.display='none';
+	document.getElementById("tr_answer").style.display='none';
+}
+</script>
+
+  <div id="register" style="width:663; height:421; background-color:#546B51; padding:4px; position:absolute; z-index:11;display:none;">
+  <form name="form1" action="" method="post">
+    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FEFEFC">
+      <tr>
+        <td height="408" align="center" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="50" style="color:#1B7F5D;font-size: 14px;"><b>用户注册</b></td>
+          </tr>
+        </table>
+          <table width="94%" height="331" border="0" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+            <tr>
+              <td height="310" valign="top" bgcolor="#FFFFFF"><table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFEF9">
+                <tr id="tr_user" style="display:none">
+                <div id="div_user" ></div>
+                </tr>
+                <tr>
+                  <td width="93" height="40" align="right">用户名：</td>
+                  <td height="40" align="left"><input name="user" type="text" onBlur="checkUser(this.value)">
+                    &nbsp;*长度限制为20个字母或10个汉字</td>
+                </tr>
+                <tr id="tr_pwd" style="display:none">
+                  <div id="div_pwd" ></div>
+                </tr>
+                <tr>
+                  <td height="40" align="right">密码：</td>
+                  <td height="40" align="left"><input name="pwd" type="password" onBlur="checkPwd(this.value)">
+                    &nbsp;* 密码由字母开头的字母、数字或下划线组成，并且密码的长度大于6位小于30位</td>
+                </tr>
+                <tr>
+                  <td height="40" align="right">确认密码：</td>
+                  <td height="40" align="left"><input name="repwd" type="password" onBlur="checkRepwd(this.value)">
+                    &nbsp;* 请确认密码 </td>
+                </tr>
+                <tr id="tr_email" style="display:none">
+                  <div id="div_email" ></div>
+                </tr>
+                <tr>
+                  <td height="40" align="right">E-mail地址：</td>
+                  <td height="40" align="left"><input name="email" type="text" size="35" onBlur="checkEmail(this.value)">
+                    &nbsp;* 请输入有效的E-mail地址，在找回密码时应用 </td>
+                </tr>
+                <tr>
+                  <td height="40" align="right">所在地：</td>
+                  <td height="40" align="left"><select name="province" id="province" onChange="getCity(this.value)">
+                  </select>
+                  -
+                  <select name="city" id="city">
+                      </select></td>
+                </tr>
+                <tr>
+                  <td height="40" colspan="2" align="center">以下两个选项，只要有任何一个没有输入，将不可以通过答案问题重新设置密码。</td>
+                </tr>
+                <tr id="tr_question" style="display:none">
+                  <div id="div_question" ></div>
+                </tr>
+                <tr>
+                  <td height="40" align="right">密码提示问题：</td>
+                  <td height="40" align="left"><input name="question" type="text" id="question" size="35" onBlur="checkQuestion(this.value,this.form.answer.value)">
+                    如：我的工作单位</td>
+                </tr>
+                <tr id="tr_answer" style="display:none">
+                  <div id="div_answer" ></div>
+                </tr>
+                <tr>
+                  <td height="40" align="right">提示问题答案：</td>
+                  <td height="40" align="left"><input name="answer" type="text" id="answer" size="35" onBlur="checkQuestion(this.form.question.value,this.value)">
+ 如：               </td>
+                </tr>
+                <tr>
+                  <td height="40">&nbsp;</td>
+                  <td height="40" align="center"><input name="btn_sumbit" type="button" class="btn_grey" value="提交" onClick="save()">
+                    &nbsp;
+                    <input name="btn_reset" type="button" class="btn_grey" value="重置" onClick="form_reset(this.form)">
+					&nbsp;
+                    <input name="btn_close" type="button" class="btn_grey" value="关闭" onClick="Myclose('register')"></td>
+                </tr>
+
+              </table></td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr>
+        <td height="10" align="center" valign="top" bgcolor="#FEFEFC">&nbsp;</td>
+      </tr>
+    </table>
+	</form>
+  </div>

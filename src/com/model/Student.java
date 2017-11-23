@@ -1,29 +1,22 @@
 package com.model;
 
 public class Student extends Person{
-private String number;//Ñ§ºÅ
-private String classnum;//°à¼¶
+private Course course;
 private Grade grade;
-
 public Student() {
 }
-public Student(String number, String classnum, Grade grade) {
+
+public Student(Course course, Grade grade) {
 	super();
-	this.number = number;
-	this.classnum = classnum;
+	this.course = course;
 	this.grade = grade;
 }
-public String getNumber() {
-	return number;
+
+public Course getCourse() {
+	return course;
 }
-public void setNumber(String number) {
-	this.number = number;
-}
-public String getClassnum() {
-	return classnum;
-}
-public void setClassnum(String classnum) {
-	this.classnum = classnum;
+public void setCourse(Course course) {
+	this.course = course;
 }
 public Grade getGrade() {
 	return grade;
@@ -31,5 +24,6 @@ public Grade getGrade() {
 public void setGrade(Grade grade) {
 	this.grade = grade;
 }
+
 
 }

@@ -1,41 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
- <!-- 员工信息字段配置信息 -->
  <hibernate-mapping>
  	<class name="com.model.Person" abstract="true">
  		<!-- id值 -->
- 		<id name="id" column="id" type="int">
-			<generator class="native"/>
+ 		<id name="id" column="id" type="string">
+			<generator class="assigned"/>
 		</id>
 		<!-- 姓名 -->
-		<property name="name" type="string" length="45">
+		<property name="name" type="string">
 			<column name="name"/>
 		</property>
-		<!-- 性别 -->
-		<property name="sex" type="string" length="1">
-			<column name="sex"/>
+		
+		<property name="username" type="string" >
+			<column name="username"/>
 		</property>
-		<!-- 职务 -->
-		<property name="business" type="string" length="45">
-			<column name="business"/>
+		
+		<property name="password" type="string">
+			<column name="password"/>
 		</property>
-		<!-- 地址 -->
-		<property name="address" type="string" length="100">
-			<column name="address"/>
+		
+		<property name="email" type="string">
+			<column name="email"/>
 		</property>
-		<!-- 备注 -->
-		<property name="remark" type="string" length="200">
-			<column name="remark"/>
-		</property>
- 	</class>
- 	    <union-subclass name="com.suxiaolei.hibernate.pojos.Student"
-        table="student" extends="com.suxiaolei.hibernate.pojos.People">
-        <property name="cardId" column="cardId" type="string"></property>
+		
+		<property name="sf" type="int">
+			<column name="sf"/>
+		</property>		
+		
+ 	 <union-subclass name="com.model.Student"
+        table="student">
+        
+        <one-to-one name="grade" class="com.model.Grade"  cascade="all"></one-to-one>
+        
+        <many-to-one name="course" class="com.model.Course">
+            <!-- column标签指定关联外键，还是子表的外键列名 -->
+            <column name="course_id"></column>
+        </many-to-one>
+        
     </union-subclass>
 
-    <union-subclass name="com.suxiaolei.hibernate.pojos.Teacher"
-        table="teacher" extends="com.suxiaolei.hibernate.pojos.People">
-        <property name="salary" column="salary" type="integer"></property>
+    <union-subclass name="com.model.Teacher"
+        table="teacher">
+        <property name="url" type="string">
+             <column name="url"/>
+        </property>
+        
+        <set name="courses" cascade="save-update" inverse="true">
+            <!-- key配置的是子表的外键列名 -->
+            <key column="teacher_id"></key>
+            <!-- one-to-many标签声明关联关系是一对多，class指定多方的实体类类型 -->
+            <one-to-many class="com.model.Course" />
+        </set>
     </union-subclass>
+   </class>
  </hibernate-mapping>

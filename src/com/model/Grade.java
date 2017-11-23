@@ -6,12 +6,17 @@ private int usual_Grade;
 private int mid_Grade;
 private int final_Grade;
 private int experiment_Grade;
+private Student student;
 public Grade(){}
-public Grade(int usual_Grade, int mid_Grade, int final_Grade, int experiment_Grade) {
+
+public Grade(String id, int usual_Grade, int mid_Grade, int final_Grade, int experiment_Grade, Student student) {
+	super();
+	this.id = id;
 	this.usual_Grade = usual_Grade;
 	this.mid_Grade = mid_Grade;
 	this.final_Grade = final_Grade;
 	this.experiment_Grade = experiment_Grade;
+	this.student = student;
 }
 
 public String getId() {
@@ -44,5 +49,12 @@ public int getExperiment_Grade() {
 public void setExperiment_Grade(int experiment_Grade) {
 	this.experiment_Grade = experiment_Grade;
 }
+public Student getStudent() {
+	return student;
+}
+public void setStudent(Student student) {
+	this.student = student;
+}
+
 
 }

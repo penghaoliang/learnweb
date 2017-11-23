@@ -5,7 +5,9 @@
  	<class name="com.model.Grade" table="grade">
  		<!-- id值 -->
  		<id name="id" column="id" type="string">
-            <generator class="native"></generator>
+            <generator class="foreign">
+                <param name="property">student</param>
+            </generator>
 		</id>
 		
 		<property name="usual_Grade" type="int">
@@ -23,5 +25,6 @@
 		<property name="experiment_Grade" type="int">
 			<column name="experiment_Grade"/>
 		</property>
+		<one-to-one name="student" class="com.model.Student" cascade="save-update" constrained="true"></one-to-one>
  	</class>
  </hibernate-mapping>
