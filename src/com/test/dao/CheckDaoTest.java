@@ -10,7 +10,7 @@ import com.dao.CheckDao;
 public class CheckDaoTest {
 	public final static String username="admin";
 	public final static String password="admin";
-	public final static String username1="111111";
+	public final static String username1="1";
 	public final static String password1="1";	
 	CheckDao checkDao=new CheckDao() ;
     

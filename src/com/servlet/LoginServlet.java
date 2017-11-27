@@ -70,7 +70,6 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("userName", username);
 				session.setAttribute("sf", person.getSf());
-				request.setAttribute("returnValue", "µÇÂ¼³É¹¦£¡");
 				value = "true";
 				response.getWriter().write(value);
 			} else {
@@ -83,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 		StudentDao studentDao=new StudentDao();
 		TeacherDao teacherDao=new TeacherDao();
 		String user = request.getParameter("user");
-		String pwd = request.getParameter("pwd");
+		String pwd = request.getParameter("pwd1");
 		String name = request.getParameter("name");
 		String number = request.getParameter("number");
 		String email = request.getParameter("email");

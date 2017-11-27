@@ -1,0 +1,16 @@
+#box{
+	margin:0 auto auto auto;	
+	width:1000px;					
+	clear:both;					
+	background-color: #FFFFFF;	
+}  
+#main {
+	left: 1%;
+	top: 30%;
+	width: 1000px;
+	height: 1200px;
+	z-index: 1;
+	overflow: auto;	
+	background: pink;
+	margin-top:60px; 	
+}

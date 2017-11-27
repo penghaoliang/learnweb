@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
  <style>
 #bottom{
-	background-image:url(images/bg_bottom.jpg);
+	background-image:url(${basePath}/images/bg_bottom.jpg);
 	width:1000px;
 	height:58px;
 	clear: both;

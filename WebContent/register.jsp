@@ -7,8 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script language="javascript" src="JS/AjaxRequest.js"></script>	
-<script
-	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<!--<script
+	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script> -->
+
 <script
 	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
 <script
@@ -18,12 +19,12 @@
 function Regopen(divID){
     var notClickDiv=document.getElementById("notClickDiv");	//获取id为notClickDiv的层
 	 notClickDiv.style.display='block';						//设置层显示
-	  document.getElementById("notClickDiv").style.width=document.body.clientWidth+"px";
-	  document.getElementById("notClickDiv").style.height=document.body.clientHeight+"px";
+	  document.getElementById("notClickDiv").style.width=document.documentElement.clientWidth+"px";
+	  document.getElementById("notClickDiv").style.height=document.documentElement.clientHeight+"px";
 	divID=document.getElementById(divID);	//根据传递的参数获取操作的对象
 	divID.style.display='block';			//显示用户注册页面
-	divID.style.left=(document.body.clientWidth-663)/2+"px";		//设置页面的左边距
-	divID.style.top=(document.body.clientHeight-441)/2+"px";		//设置页面的顶边距
+	divID.style.left=(document.documentElement.clientWidth-600)/2+"px";		//设置页面的左边距
+	divID.style.top=(document.documentElement.clientHeight-380)/2+"px";		//设置页面的顶边距
 }
 //隐藏用户注册页面
 function Myclose(divID){
@@ -59,13 +60,13 @@ $().ready(function() {
 			               } 
 			           } 
 			  },
-			  pwd: { 
+			  pwd1: { 
 				  required: true, 
 				  minlength: 6, 
 				  maxlength: 18 
 				  }, 
 			  repwd: { 
-				  equalTo:"#pwd" 
+				  equalTo:"#pwd1" 
 				  }, 
 			email: { 
 					  required: true, 
@@ -102,7 +103,7 @@ $().ready(function() {
 	    		  email: "email格式不正确" 
 	    		  }, 
 	    		  // 密码 
-	    	  pwd: { 
+	    	  pwd1: { 
 	    		  required: "此项不能为空", 
 	    		  minlength: "不能少于6个字符", 
 	    		  maxlength: "不能多于18个字符" 
@@ -154,7 +155,7 @@ $().ready(function() {
 									</tr>
 									<tr>
 										<td height="40" align="right">密码：</td>
-										<td height="40" align="left"><input name="pwd" id="pwd"
+										<td height="40" align="left"><input name="pwd1" id="pwd1"
 											type="password" ></td>
 									</tr>
 									<tr>

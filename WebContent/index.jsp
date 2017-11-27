@@ -3,32 +3,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="JS/jquery-2.1.1.min.js"></script>
+	<script src="JS/Carousel.js"></script>	
+	<link rel="stylesheet" href="css/style.css">
+	
 <title>首页</title>
-<style type="text/css">
-#box{
-	margin:0 auto auto auto;	
-	width:1000px;					
-	clear:both;					
-	background-color: #FFFFFF;	
-}  
-#main {
-	left: 1%;
-	top: 30%;
-	width: 1000px;
-	height: 600px;
-	z-index: 1;
-	overflow: auto;	
-	background-color: red;		
-}
-</style>
+
+<script type="text/javascript">
+$(function () {
+  $('#carousel').carousel({curDisplay: 0, autoPlay: false, interval: 3000});
+});
+</script>
 </head>
 <body>
 <div id="box">
 <%@include file="top.jsp" %>
-<%@include file="navigation.jsp" %>
-<%@ include file="register.jsp" %>
-<div id="main"></div>
+<%@include file="navigation3.jsp" %>
+<div id="index">
+
+<div id="carousel">
+	<img src="images/teacher1.png" data-url="#" alt="">
+	<img src="images/teacher2.png" data-url="#" alt="">
+	<img src="images/sj1.png" data-url="#" alt="">
+</div>
+</div>
 <%@include file="bottom.jsp" %>
 </div>
 </body>

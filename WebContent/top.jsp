@@ -15,6 +15,6 @@
 </head>
 
 <body>
-<div id="top"><img src="images/top.jpg" width="100%" height="100%" /></div>
+<div id="top"><img src="${basePath}/images/top.jpg" width="100%" height="100%" /></div>
 </body>
 </html>
