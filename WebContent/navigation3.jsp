@@ -123,13 +123,58 @@ $().ready(function() {
 			width: 1000px;
 			margin: 0 auto;
 		}
+		.hid2{
+			width: 25%;
+			height: 100px;
+			z-index:3;
+			background: #00cece;
+			position: absolute;
+			display: none;
+			right:0;
+		}
+		.hid2 ul li a{
+			width: 100%;
+			color: #ffffff;
+			margin: 0 auto;
+		}
+		.login ul li.l2:hover .hid2{
+			display: block;
+		}
+		.hid3{
+			width: 25%;
+			height: 170px;
+			z-index:3;
+			background: #00cece;
+			position: absolute;
+			display: none;
+			right:0;
+		}
+		.hid3 ul li a{
+			width: 100%;
+			color: #ffffff;
+			margin: 0 auto;
+		}
+		.login ul li.l3:hover .hid3{
+			display: block;
+		}
 		.login{
 			float: right;
-			width: 120px;
-			height: 30px;
+			width: 200px;
+			height: 60px;
 			margin-top:15px; 
 		}
-		.login a{
+		.login a.a1{
+			width: 55px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			display: block;
+			float: left;
+			color: #fff;
+			border: 1px solid #666;
+			text-decoration:none;
+		}
+		.login a.a2{
 			width: 55px;
 			height: 30px;
 			text-align: center;
@@ -210,11 +255,44 @@ $().ready(function() {
 			</div>
 			<div class="login">
 			   <c:choose>
-			   <c:when test="${username==null} ">
-			   	<a href="#" class="a1" onClick="Myopen('login')">登陆</a>
-				<a href="#" class="a2" onClick="Regopen('register')">注册</a>
+			   <c:when test="${userName==null}">
+			   	<a href="#" class="a1" id="a1" onClick="Myopen('login')">登陆</a>
+				<a href="#" class="a2" id="a2" onClick="Regopen('register')">注册</a>
 			   </c:when>
-			   <c:when test="${username!=null} ">
+			   <c:when test="${userName!=null and sf==1}">
+			   <ul>
+			   <li class="l2">
+			    欢迎尊贵的学生
+			      <a href="">${userName}</a>
+			      	<div class="hid2">
+							<ul>
+								<li><a href="">个人信息</a></li>
+								<li><a href="">选课</a></li>								
+								<li><a href="">选课结果查看</a></li>
+								<li><a href="">退出登录</a></li>
+							</ul>
+					</div>    
+			      </li>
+			     </ul>
+			   </c:when>
+			   <c:when test="${userName!=null and sf==2}">
+			   <ul>
+			   <li class="l3">
+			    欢迎尊贵的教师
+			      <a href="">${userName}</a>
+			      	<div class="hid3">
+							<ul>
+								<li><a href="">个人信息</a></li>
+								<li><a href="">选课管理</a></li>								
+								<li><a href="">成绩导入</a></li>
+								<li><a href="">成绩计算</a></li>
+								<li><a href="">成绩分析</a></li>
+								<li><a href="">成绩预警</a></li>
+								<li><a href="">退出登录</a></li>
+							</ul>
+					</div>    
+			      </li>
+			     </ul>
 			   </c:when>		   
 			   </c:choose>
 			</div>
