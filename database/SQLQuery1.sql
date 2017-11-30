@@ -35,3 +35,19 @@ final_Grade int CHECK (final_Grade>=0 and final_Grade<=100),
 experiment_Grade int CHECK (experiment_Grade>=0 and experiment_Grade<=100)
 foreign key(id) references student
 )
+
+create table message(
+id varchar(50) primary key,
+content varchar(50),
+author varchar(50),
+date datetime
+)
+
+create table reply(
+id varchar(50) primary key,
+message_id varchar(50),
+content varchar(50),
+author varchar(50),
+date datetime,
+foreign key(message_id) references message
+)

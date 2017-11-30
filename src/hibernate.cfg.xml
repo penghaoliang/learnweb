@@ -18,5 +18,7 @@
  <mapping resource="com/model/Grade.hbm.xml"/>
  <mapping resource="com/model/Course.hbm.xml"/>
  <mapping resource="com/model/Person.hbm.xml"/>
+ <mapping resource="com/model/message/Message.hbm.xml"/>
+ <mapping resource="com/model/message/Reply.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>

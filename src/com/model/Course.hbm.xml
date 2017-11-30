@@ -13,7 +13,7 @@
 			<column name="coursenum"/>
 		</property>
 		
-		<property name="date" type="java.util.Date">
+		<property name="date" type="java.sql.Date">
 			<column name="date"/>
 		</property>
         	

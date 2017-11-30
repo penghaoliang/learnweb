@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+ 	<class name="com.model.message.Message" table="message">
+ 		<!-- id值 -->
+ 		<id name="id" column="id" type="string">
+            <generator class="uuid"/>
+		</id>
+		
+		<property name="content" type="string">
+			<column name="content"/>
+		</property>
+		
+		<property name="author" type="string">
+			<column name="author"/>
+		</property>	
+			
+		<property name="date" type="java.util.Date">
+			<column name="date"/>
+		</property>
+        	
+        <set name="replys" cascade="all" lazy="false">
+            <!-- key配置的是子表的外键列名 -->
+            <key column="message_id"></key>
+            <!-- one-to-many标签声明关联关系是一对多，class指定多方的实体类类型 -->
+            <one-to-many class="com.model.message.Reply" />
+        </set>
+ 	</class>
+</hibernate-mapping>

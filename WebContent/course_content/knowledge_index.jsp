@@ -60,9 +60,9 @@
                 <li><a href=" ">教学视频</a></li>
                 <li><a href="course_exercise.jsp">练习题</a></li>
                 <li><a href="knowledge_index.jsp">知识点索引</a></li>
-                <li><a href="#section-5">考试大纲</a></li>
+                <li><a href="examination_syllabus.jsp">考试大纲</a></li>
                 <li><a href="#section-6">模拟试卷</a></li>
-                <li><a href="#section-6">案例分析</a></li>
+                <li><a href="case_analysis.jsp">案例分析</a></li>
             </ul>
         </div>
         <div class="col-xs-7" >

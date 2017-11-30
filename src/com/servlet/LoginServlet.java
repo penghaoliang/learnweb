@@ -68,6 +68,7 @@ public class LoginServlet extends HttpServlet {
 			Person person=personDao.getPersonByUserName(username);
 			if (person != null&&person.getPassword().equals(pwd)) {
 				HttpSession session = request.getSession();
+				session.setAttribute("name", person.getName());
 				session.setAttribute("userName", username);
 				session.setAttribute("sf", person.getSf());
 				value = "true";
@@ -87,7 +88,7 @@ public class LoginServlet extends HttpServlet {
 		String number = request.getParameter("number");
 		String email = request.getParameter("email");
 		String identity = request.getParameter("identity");
-		if(identity.equals("1")){
+		if(identity!=null&&identity.equals("1")){
 			Student stu=new Student();
 			stu.setEmail(email);
 			stu.setId(number);
@@ -96,7 +97,7 @@ public class LoginServlet extends HttpServlet {
             stu.setSf(Integer.parseInt(identity));
             stu.setUsername(user);
             studentDao.insertStudent(stu);        
-		}else{
+		}else if(identity.equals("2")){
 			Teacher teacher=new Teacher();
 			teacher.setEmail(email);
 			teacher.setId(number);
