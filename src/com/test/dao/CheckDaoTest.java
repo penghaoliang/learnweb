@@ -23,5 +23,4 @@ public class CheckDaoTest {
 		assertEquals(true,checkDao.checkNumber("1"));
 		assertEquals(true,checkDao.checkUser(username, password));
 	}
-
 }

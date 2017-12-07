@@ -38,8 +38,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	/**
@@ -57,8 +56,17 @@ public class LoginServlet extends HttpServlet {
 			this.registerUser(request, response);
 		} else if ("login".equals(action)) {
 		     this.login(request, response);
+	}else if ("quit".equals(action)) {
+	     this.quit(request, response);
+}
 	}
-	}
+	 private void quit(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+           HttpSession session=request.getSession();
+           session.removeAttribute("name");
+           session.removeAttribute("userName");
+           request.getRequestDispatcher("/index.jsp").forward(request, response);
+		}
 	   private void login(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
 			String username = request.getParameter("username");
@@ -69,6 +77,8 @@ public class LoginServlet extends HttpServlet {
 			if (person != null&&person.getPassword().equals(pwd)) {
 				HttpSession session = request.getSession();
 				session.setAttribute("name", person.getName());
+				session.setAttribute("mail", person.getEmail());
+				session.setAttribute("id", person.getId());
 				session.setAttribute("userName", username);
 				session.setAttribute("sf", person.getSf());
 				value = "true";

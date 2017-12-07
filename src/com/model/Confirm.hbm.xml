@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping>
+ 	<class name="com.model.Confirm" table="confirm">
+ 		<!-- id值 -->
+ 		<id name="id" column="id" type="string">
+            <generator class="uuid"/>
+		</id>
+		
+		<property name="coursenum" type="int">
+			<column name="coursenum"/>
+		</property>
+		
+		<property name="student_id" type="string">
+			<column name="student_id"/>
+		</property>
+		<property name="teacher_id" type="string">
+			<column name="teacher_id"/>
+		</property>			
+            	
+		<property name="student_name" type="string">
+			<column name="student_name"/>
+		</property>
+ 	</class>
+</hibernate-mapping>

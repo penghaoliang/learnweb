@@ -26,6 +26,22 @@ function Myopen(divID){ 								//根据传递的参数确定显示的层
       document.getElementById(divID).style.left=(document.documentElement.clientWidth-240)/2+"px";		//设置由divID所指定的层的左边距
       document.getElementById(divID).style.top=(document.documentElement.clientHeight-139)/2+"px";		//设置由divID所指定的层的顶边框
 }
+//隐藏用户注册页面
+function Myclose(divID) {
+	document.getElementById(divID).style.display = 'none'; //隐藏用户注册页面
+	//设置id为notClickDiv的层隐藏
+	document.getElementById("notClickDiv").style.display = 'none';
+}
+//显示用户注册页面
+function Regopen(divID) {
+	var notClickDiv = document.getElementById("notClickDiv"); //获取id为notClickDiv的层
+	notClickDiv.style.display = 'block'; //设置层显示
+	document.getElementById("notClickDiv").style.width = document.documentElement.clientWidth+ "px";
+	document.getElementById("notClickDiv").style.height = document.documentElement.clientHeight+ "px";
+	 document.getElementById(divID).style.display='block';	
+	 document.getElementById(divID).style.left = (document.documentElement.clientWidth - 600)/2+"px";		//设置页面的左边距
+	 document.getElementById(divID).style.top = (document.documentElement.clientHeight - 380)/2+"px";		//设置页面的顶边距
+}
 </script>
 <script>
 $().ready(function() {
@@ -154,7 +170,7 @@ $().ready(function() {
 
 .hid3 {
 	width: 25%;
-	height: 170px;
+	height: 100px;
 	z-index: 3;
 	background: #00cece;
 	position: absolute;
@@ -275,7 +291,7 @@ $().ready(function() {
 							</ul>
 						</div></li>
 					<li><a href="">下载区</a></li>
-					<li><a href="">成绩查询</a></li>
+					<li><a href="${basePath}/grade_search.jsp">成绩查询</a></li>
 					<li><a href="${basePath}/message/viewmessage.jsp">留言板</a></li>
 					<li><a href="">网上测试</a></li>
 				</ul>
@@ -292,9 +308,9 @@ $().ready(function() {
 								<div class="hid2">
 									<ul>
 										<li><a href="">个人信息</a></li>
-										<li><a href="">选课</a></li>
-										<li><a href="">选课结果查看</a></li>
-										<li><a href="">退出登录</a></li>
+										<li><a href="${basePath}/student/viewtakeCourse.jsp">选课</a></li>
+										<li><a href="${basePath}/student/viewxuankelist.jsp">选课结果查看</a></li>
+										<li><a href="LoginServlet.do?action=quit">退出登录</a></li>
 									</ul>
 								</div>
 							</li>
@@ -306,12 +322,10 @@ $().ready(function() {
 								<div class="hid3">
 									<ul>
 										<li><a href="">个人信息</a></li>
-										<li><a href="">选课管理</a></li>
-										<li><a href="">成绩导入</a></li>
-										<li><a href="">成绩计算</a></li>
-										<li><a href="">成绩分析</a></li>
-										<li><a href="">成绩预警</a></li>
-										<li><a href="">退出登录</a></li>
+										<li><a href="${basePath}/teacher/viewqueren.jsp">选课管理</a></li>
+										<li><a href="${basePath}/teacher/viewgradedaoru.jsp">成绩导入</a></li>
+										<li><a href="${basePath}/teacher/viewgradefenxi.jsp">成绩分析</a></li>
+										<li><a href="LoginServlet.do?action=quit">退出登录</a></li>
 									</ul>
 								</div>
 							</li>

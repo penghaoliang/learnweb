@@ -33,7 +33,7 @@
         
         <one-to-one name="grade" class="com.model.Grade"  cascade="all"></one-to-one>
         
-        <many-to-one name="course" class="com.model.Course">
+        <many-to-one name="course" class="com.model.Course" lazy="false">
             <!-- column标签指定关联外键，还是子表的外键列名 -->
             <column name="course_id"></column>
         </many-to-one>
@@ -45,8 +45,14 @@
         <property name="url" type="string">
              <column name="url"/>
         </property>
-        
-        <set name="courses" cascade="save-update" inverse="true">
+        <set name="confirm" cascade="all" lazy="false">
+            <!-- key配置的是子表的外键列名 -->
+            <key column="teacher_id"></key>
+            <!-- one-to-many标签声明关联关系是一对多，class指定多方的实体类类型 -->
+            <one-to-many class="com.model.Confirm" />
+        </set>
+                
+        <set name="courses" cascade="save-update" inverse="true" lazy="false">
             <!-- key配置的是子表的外键列名 -->
             <key column="teacher_id"></key>
             <!-- one-to-many标签声明关联关系是一对多，class指定多方的实体类类型 -->

@@ -8,7 +8,19 @@ password varchar(50),
 email varchar(50), 
 url varchar(50),
 sf int check(sf in(1,2,3))
+confirm_id varchar(50),
+foreign key(confirm_id) references confirm
 )
+create table confirm(
+id varchar(50) primary key,
+teacher_id varchar(50),
+student_id varchar(50),
+student_name varchar(50),
+coursenum int,
+foreign key(teacher_id) references teacher
+)
+
+
 create table course(
 id varchar(50) primary key,
 coursenum int,

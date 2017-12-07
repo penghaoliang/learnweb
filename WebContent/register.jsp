@@ -2,10 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
 <script language="javascript" src="JS/AjaxRequest.js"></script>
 <!--<script
 	src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script> -->
@@ -14,29 +11,6 @@
 	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
 <script
 	src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-<script language="javascript">
-	//显示用户注册页面
-	function Regopen(divID) {
-		var notClickDiv = document.getElementById("notClickDiv"); //获取id为notClickDiv的层
-		notClickDiv.style.display = 'block'; //设置层显示
-		document.getElementById("notClickDiv").style.width = document.documentElement.clientWidth
-				+ "px";
-		document.getElementById("notClickDiv").style.height = document.documentElement.clientHeight
-				+ "px";
-		divID = document.getElementById(divID); //根据传递的参数获取操作的对象
-		divID.style.display = 'block'; //显示用户注册页面
-		divID.style.left = (document.documentElement.clientWidth - 600)
-		/2+"px";		/ / 设置页面的左边距
-		divID.style.top = (document.documentElement.clientHeight - 380)
-		/2+"px";		/ / 设置页面的顶边距
-	}
-	//隐藏用户注册页面
-	function Myclose(divID) {
-		document.getElementById(divID).style.display = 'none'; //隐藏用户注册页面
-		//设置id为notClickDiv的层隐藏
-		document.getElementById("notClickDiv").style.display = 'none';
-	}
-</script>
 <script>
 	$().ready(function() {
 		$.validator.setDefaults({
@@ -136,9 +110,21 @@
 .error {
 	color: red;
 }
+#notClickDiv {
+	filter: alpha(Opacity = 35);
+	opacity: 0.35; /*设置不透明度为35%*/
+	background: #000000; /*设置背景为黑色*/
+	position: absolute; /*设置定位方式为绝对位置*/
+	display: none; /*设置该<div>标记显示*/
+	z-index: 9; /*设置层叠顺序*/
+	top: 0px; /*设置顶边距*/
+	left: 0px; /*设置左边距*/
+	margin: 0px;
+	padding: 0px;
+}
 </style>
-</head>
-<body>
+
+	<div id="notClickDiv"></div>
 	<div id="register"
 		style="width: 663; height: 421; background-color: #546B51; padding: 4px; position: absolute; z-index: 11; display: none;">
 		<form name="form1" id="form1"
@@ -212,6 +198,3 @@
 			</table>
 		</form>
 	</div>
-</body>
-
-</html>

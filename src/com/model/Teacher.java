@@ -5,14 +5,20 @@ import java.util.Set;
 
 public class Teacher extends Person{
 private Set<Course> courses= new HashSet<Course>();
+private Set<Confirm> confirm= new HashSet<Confirm>();
 private String url;
 public Teacher(){}
 
-public Teacher(Set<Course> courses, String url) {
-	super();
-	this.courses = courses;
-	this.url = url;
+
+public Set<Confirm> getConfirm() {
+	return confirm;
 }
+
+
+public void setConfirm(Set<Confirm> confirm) {
+	this.confirm = confirm;
+}
+
 
 public Set<Course> getCourses() {
 	return courses;

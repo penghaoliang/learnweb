@@ -79,7 +79,7 @@ public class StudentDao {
 		try {
 			session = HibernateUtils.currentSession();		//获取Session
 			session.beginTransaction();	
-			String hql="from Student order by userId desc";
+			String hql="from Student where sf=1";
 			Query q=session.createQuery(hql);
 			list=q.list();
 			session.getTransaction().commit();			//提交事物

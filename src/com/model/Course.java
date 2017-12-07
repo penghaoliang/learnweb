@@ -1,26 +1,16 @@
 package com.model;
 
-import java.util.Date;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class Course{
 private String id; 
 private int coursenum; 
-private Date date;
+private String date;
 private Teacher teacher;
 private Set<Student> students=new HashSet<Student>();
 public Course(){}
-
-public Course(String id, int coursenum, Date date, Teacher teacher, Set<Student> students) {
-	super();
-	this.id = id;
-	this.coursenum = coursenum;
-	this.date = date;
-	this.teacher = teacher;
-	this.students = students;
-}
-
 public String getId() {
 	return id;
 }
@@ -33,10 +23,10 @@ public int getCoursenum() {
 public void setCoursenum(int coursenum) {
 	this.coursenum = coursenum;
 }
-public Date getDate() {
+public String getDate() {
 	return date;
 }
-public void setDate(Date date) {
+public void setDate(String date) {
 	this.date = date;
 }
 public Teacher getTeacher() {

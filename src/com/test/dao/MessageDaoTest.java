@@ -2,6 +2,7 @@ package com.test.dao;
 
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.model.message.Reply;
 public class MessageDaoTest {
 	java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 	Date date = new Date();
+	DateFormat df1 =  new SimpleDateFormat("HH:mm:ss");
 	DateFormat df2 = DateFormat.getDateTimeInstance();
 	public final static String author="admin";
 	public final static String content="admin";
@@ -34,18 +36,18 @@ public class MessageDaoTest {
 	public void testInsertMessage() {
 		df2.format(date);
 		System.out.println(date);
-		//messageDao.insertMessage(message);
+		messageDao.insertMessage(message);
 		//messageDao.deleteMessage(id);
 		List<Message> list=null;
 		list=messageDao.getMessages();
-		for(int i=0;i<4;i++){
-		Iterator<Reply>   it =  list.get(i).getReplys().iterator();
-		while (it.hasNext()) {  
-			Date date1=it.next().getDate();
-			df2.format(date1);
-            System.out.println(date1);  
-        }   
-	} 
+//		for(int i=0;i<4;i++){
+//		Iterator<Reply>   it =  list.get(i).getReplys().iterator();
+//		while (it.hasNext()) {  
+//			Date date1=it.next().getDate();
+//			df2.format(date1);
+//            System.out.println(date1);  
+//        }   
+//	} 
 	}
 
 }
