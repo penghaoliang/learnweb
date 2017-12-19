@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.model.Questions" table="questions">
+		<!-- id值 -->
+		<id name="id" column="id" type="int">
+			<generator class="native"/>
+		</id>
+
+		<property name="qName" type="string">
+			<column name="qName" />
+		</property>
+
+		<property name="qAnswer" type="string">
+			<column name="qAnswer" />
+		</property>
+		<set name="options" cascade="all" inverse="true" lazy="false">
+			<!-- key配置的是子表的外键列名 -->
+			<key column="questions_id"></key>
+			<!-- one-to-many标签声明关联关系是一对多，class指定多方的实体类类型 -->
+			<one-to-many class="com.model.Options" />
+		</set>
+	</class>
+</hibernate-mapping>

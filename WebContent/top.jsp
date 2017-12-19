@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 #top {
-	width:800px;
+	width:1000px;
 	height:176px;
 	background-color: #D6D6D6;
 	overflow: auto;
@@ -15,6 +15,6 @@
 </head>
 
 <body>
-<div id="top"><img src="${basePath}/images/top.jpg" width="100%" height="100%" /></div>
+<div id="top"><img src="${basePath}/images/top1.jpg" width="100%" height="100%" /></div>
 </body>
 </html>

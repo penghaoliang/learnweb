@@ -63,7 +63,7 @@ $().ready(function() {
 				  required: true, 
 			        remote:{                                     
 			               type:"POST",
-			               url:"LoginServlet.do",             //servlet
+			               url:"${basePath}/LoginServlet.do",             //servlet
 			               data:{
 			            	  action:'login',
 			            	   username:function(){return $("#username").val();},
@@ -286,14 +286,22 @@ $().ready(function() {
 							<ul>
 								<li><a href="${basePath}/introduction.jsp">课程介绍</a></li>
 								<li><a href="${basePath}/course_content/teach_plan.jsp">课程内容</a></li>
-								<li><a href="">课程实践</a></li>
-								<li><a href="">教学团队</a></li>
+								<li><a href="${basePath}/Curriculum practice/guide_book.jsp">课程实践</a></li>
+								<li><a href="${basePath}/team,.jsp">教学团队</a></li>
 							</ul>
 						</div></li>
-					<li><a href="">下载区</a></li>
+					<li><a href="${basePath}/download.jsp">下载区</a></li>
 					<li><a href="${basePath}/grade_search.jsp">成绩查询</a></li>
 					<li><a href="${basePath}/message/viewmessage.jsp">留言板</a></li>
-					<li><a href="">网上测试</a></li>
+					<li class="l1"><a href="">网上测试</a>
+					    <div class="hid">
+					    <ul>
+								<li><a href="${basePath}/teacher/viewquestion.do?action=viewquestion">题库管理</a></li>
+								<li><a href="${basePath}/teacher/addquestion.jsp">添加题库</a></li>
+								<li><a href="${basePath}/student/TestServlet.do?action=viewtest"">学生考试</a></li>
+							</ul>
+					    </div>
+					</li>
 				</ul>
 			</div>
 			<div class="login">
@@ -310,7 +318,7 @@ $().ready(function() {
 										<li><a href="">个人信息</a></li>
 										<li><a href="${basePath}/student/viewtakeCourse.jsp">选课</a></li>
 										<li><a href="${basePath}/student/viewxuankelist.jsp">选课结果查看</a></li>
-										<li><a href="LoginServlet.do?action=quit">退出登录</a></li>
+										<li><a href="${basePath}/LoginServlet.do?action=quit">退出登录</a></li>
 									</ul>
 								</div>
 							</li>
@@ -318,14 +326,14 @@ $().ready(function() {
 					</c:when>
 					<c:when test="${userName!=null and sf==2}">
 						<ul>
-							<li class="l3">欢迎尊贵的教师 <a href="">${userName}</a>
+							<li class="l3">欢迎尊贵的教师 <a href="">${name}</a>
 								<div class="hid3">
 									<ul>
 										<li><a href="">个人信息</a></li>
 										<li><a href="${basePath}/teacher/viewqueren.jsp">选课管理</a></li>
 										<li><a href="${basePath}/teacher/viewgradedaoru.jsp">成绩导入</a></li>
 										<li><a href="${basePath}/teacher/viewgradefenxi.jsp">成绩分析</a></li>
-										<li><a href="LoginServlet.do?action=quit">退出登录</a></li>
+										<li><a href="${basePath}/LoginServlet.do?action=quit">退出登录</a></li>
 									</ul>
 								</div>
 							</li>

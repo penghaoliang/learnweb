@@ -26,7 +26,7 @@ height:20px;
 <%@include file="/navigation3.jsp" %>
 <div id="main">
 <div class="jumbotron">
-				<h1>成绩导入/h1>
+				<h1>成绩导入</h1>
 			</div>
 			<form action="GradeServlet.do?action=daoru" method="post">
 			<table width="100%"  border="0" cellpadding="0"

@@ -4,6 +4,7 @@
 	clear:both;					
 	background-color: #FFFFFF;	
 }  
+body{padding:0;margin:0;font:14px/1.5 arial,"microsoft yahei";background:#253242;letter-spacing:1px}
 #main {
 	left: 1%;
 	top: 30%;

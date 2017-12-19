@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.model.TestPaper" table="testpaper">
+		<!-- id值 -->
+		<id name="id" column="id" type="int">
+			<generator class="assigned" />
+		</id>
+
+		<property name="tName" type="string">
+			<column name="tName" />
+		</property>
+
+		<property name="startTime" type="java.util.Date">
+			<column name="startTime" />
+		</property>
+		<property name="endTime" type="java.util.Date">
+			<column name="endTime" />
+		</property>
+		<set name="questionsSet" cascade="all" inverse="true" lazy="false">
+			<!-- key配置的是子表的外键列名 -->
+			<key column="testpaper_id"></key>
+			<!-- one-to-many标签声明关联关系是一对多，class指定多方的实体类类型 -->
+			<one-to-many class="com.model.Questions" />
+		</set>
+	</class>
+</hibernate-mapping>

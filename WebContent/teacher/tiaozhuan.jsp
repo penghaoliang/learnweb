@@ -1,0 +1,1 @@
+<% request.getRequestDispatcher("viewquestion.do?action=viewquestion").forward(request, response); %>

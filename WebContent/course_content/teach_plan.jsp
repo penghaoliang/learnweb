@@ -42,6 +42,7 @@
     ul.nav-tabs.affix{
         top: 30px; /* Set the top position of pinned element */
     }
+    a {font-family:Georgia;}
 </style>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy">
@@ -57,7 +58,7 @@
         <div class="col-xs-3" id="myScrollspy">
             <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
                 <li class="active"><a href="teach_plan.jsp">授课教案</a></li>
-                <li><a href=" ">教学视频</a></li>
+                <li><a href="#section-1">教学视频</a></li>
                 <li><a href="course_exercise.jsp">练习题</a></li>
                 <li><a href="knowledge_index.jsp">知识点索引</a></li>
                 <li><a href="examination_syllabus.jsp">考试大纲</a></li>
@@ -116,6 +117,18 @@
            	<p>4．项目计划概念和内容</p>
            	<p>5．项目控制概念和过程</p>
         </div>
+        
+        
+          <h2 id="section-1">教学视频</h2>
+           <div style="line-height:30px"  >
+            <a href="showvideo2.jsp">7分钟带你了解项目管理课程</a><br>
+            <a href="showvideo3.jsp">project教程（1）</a><br>
+            <a href="showvideo4.jsp">project教程（2）</a><br>
+            <a href="showvideo5.jsp">project教程（3）</a><br>
+            <a href="showvideo6.jsp">project教程（4）</a><br>
+            <a href="showvideo7.jsp">project教程（5）</a><br>
+
+            <hr>
     </div>
 </div>
 </div>

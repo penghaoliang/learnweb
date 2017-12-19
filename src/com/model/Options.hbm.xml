@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.model.Options" table="options">
+		<!-- id值 -->
+		<id name="id" column="id" type="int">
+			<generator class="native" />
+		</id>
+
+		<property name="oNo" type="string">
+			<column name="oNo" />
+		</property>
+
+		<property name="oName" type="string">
+			<column name="oName" />
+		</property>
+		
+		   <many-to-one name="questions" class="com.model.Questions" lazy="false">
+            <!-- column标签指定关联外键，还是子表的外键列名 -->
+            <column name="questions_id"></column>
+        </many-to-one>
+	</class>
+</hibernate-mapping>
+		
