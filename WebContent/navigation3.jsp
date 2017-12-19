@@ -65,7 +65,7 @@ $().ready(function() {
 			               type:"POST",
 			               url:"${basePath}/LoginServlet.do",             //servlet
 			               data:{
-			            	  action:'login',
+			            	   action:'login',
 			            	   username:function(){return $("#username").val();},
 			            	   pwd:function(){return $("#pwd").val();}
 			               } 
@@ -315,7 +315,6 @@ $().ready(function() {
 							<li class="l2">欢迎尊贵的学生 <a href="">${name}</a>
 								<div class="hid2">
 									<ul>
-										<li><a href="">个人信息</a></li>
 										<li><a href="${basePath}/student/viewtakeCourse.jsp">选课</a></li>
 										<li><a href="${basePath}/student/viewxuankelist.jsp">选课结果查看</a></li>
 										<li><a href="${basePath}/LoginServlet.do?action=quit">退出登录</a></li>
@@ -329,7 +328,6 @@ $().ready(function() {
 							<li class="l3">欢迎尊贵的教师 <a href="">${name}</a>
 								<div class="hid3">
 									<ul>
-										<li><a href="">个人信息</a></li>
 										<li><a href="${basePath}/teacher/viewqueren.jsp">选课管理</a></li>
 										<li><a href="${basePath}/teacher/viewgradedaoru.jsp">成绩导入</a></li>
 										<li><a href="${basePath}/teacher/viewgradefenxi.jsp">成绩分析</a></li>

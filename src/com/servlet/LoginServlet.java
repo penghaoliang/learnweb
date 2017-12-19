@@ -65,7 +65,10 @@ public class LoginServlet extends HttpServlet {
            HttpSession session=request.getSession();
            session.removeAttribute("name");
            session.removeAttribute("userName");
-           request.getRequestDispatcher("/index.jsp").forward(request, response);
+           session.removeAttribute("mail");
+           session.removeAttribute("id");
+           session.removeAttribute("sf");
+           response.sendRedirect("index.jsp");
 		}
 	   private void login(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
@@ -107,7 +110,7 @@ public class LoginServlet extends HttpServlet {
             stu.setSf(Integer.parseInt(identity));
             stu.setUsername(user);
             studentDao.insertStudent(stu);        
-		}else if(identity.equals("2")){
+		}else if(identity!=null&&identity.equals("2")){	
 			Teacher teacher=new Teacher();
 			teacher.setEmail(email);
 			teacher.setId(number);
@@ -117,7 +120,7 @@ public class LoginServlet extends HttpServlet {
             teacher.setUsername(user);
             teacherDao.insertTeacher(teacher);   			
 		}
-     request.getRequestDispatcher("/index.jsp").forward(request, response);
+		response.sendRedirect("index.jsp");
 	}
 
 	private void verifyUser(HttpServletRequest request, HttpServletResponse response)

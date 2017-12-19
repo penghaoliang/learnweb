@@ -50,7 +50,9 @@
 <%@include file="/navigation3.jsp" %>
 <div id="main" data-spy="scroll" data-target="#myScrollspy">
 <div class="container">
-
+ 				<div class="jumbotron">
+					<h1>学生实践文档展示</h1>
+				</div>
     <div class="row">
         <div class="col-xs-3" id="myScrollspy">
             <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">

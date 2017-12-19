@@ -67,16 +67,19 @@ public class TestServlet extends HttpServlet {
 			String answer=request.getParameter("answer");
 			String a=request.getParameter("x");
 			if(a.equals(answer)) {
-				grade+=5;
+				grade+=20;
 			}
 			int i=Integer.parseInt(session.getAttribute("i").toString());
 			i++;
 			session.setAttribute("i", i);
 			session.setAttribute("grade", grade);
 			List<Questions> list=qdao.getQuestionsList();
-			if(list.size()>=i+1) {
-			request.setAttribute("questionList", list.get(i));
-			request.getRequestDispatcher("/student/test.jsp").forward(request, response);
-			}else request.getRequestDispatcher("/student/test1.jsp").forward(request, response);
+			 if(i==5){
+				request.getRequestDispatcher("/student/test1.jsp").forward(request, response);
+			}else{
+				request.setAttribute("questionList", list.get(i));
+				request.getRequestDispatcher("/student/test.jsp").forward(request, response);
+			}
+
 		}
 }

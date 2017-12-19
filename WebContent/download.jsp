@@ -49,7 +49,10 @@
 <div id="box">
 <%@include file="top.jsp" %>
 <%@include file="navigation3.jsp" %>
-<div id="main" style="line-height:30px; font-size:20px ;font-face:verdana"   data-spy="scroll" data-target="#myScrollspy" align="center">
+<div id="main" style="line-height:30px; font-size:20px ;font-face:verdana"   data-spy="scroll" data-target="#myScrollspy">
+ 				<div class="jumbotron">
+					<h1>下载区</h1>
+				</div>
 <a href="study-sucai.rar">软件项目管理素材下载</a> <br>
 <a href="study-sucai.rar">案例下载</a> <br>
 <a href="study-sucai.rar">往年作品</a> <br>

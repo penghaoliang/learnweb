@@ -6,9 +6,9 @@
 <!--配置SQLServer连接属性-->
  <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
  <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
- <property name="connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=learnWeb</property>
+ <property name="connection.url">jdbc:sqlserver://localhost:1434;DatabaseName=learnWeb</property>
  <property name="connection.username">sa</property>
- <property name="connection.password">0743</property>
+ <property name="connection.password">sa</property>
 <!--在控制台显示SQL语句-->
  <property name="show_sqlserver">true</property>
 <!--根据需要自动生成、更新数据表-->

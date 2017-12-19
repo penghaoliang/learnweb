@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
-import org.apache.catalina.Session;
 
 import com.dao.OptionsDao;
 import com.dao.QuestionsDao;

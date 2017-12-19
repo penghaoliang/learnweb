@@ -61,7 +61,7 @@ ul.nav-tabs.affix {
 		<div id="main" data-spy="scroll" data-target="#myScrollspy">
 			<div class="container">
 				<div class="jumbotron">
-					<h1>案例分析</h1>
+					<h1>考试大纲</h1>
 				</div>
 				<div class="row">
 					<div class="col-xs-3" id="myScrollspy">
@@ -72,7 +72,6 @@ ul.nav-tabs.affix {
 							<li><a href="course_exercise.jsp">练习题</a></li>
 							<li><a href="knowledge_index.jsp">知识点索引</a></li>
 							<li><a href="examination_syllabus.jsp">考试大纲</a></li>
-							<li><a href="#section-6">模拟试卷</a></li>
 							<li><a href="case_analysis.jsp">案例分析</a></li>
 						</ul>
 					</div>

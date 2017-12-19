@@ -20,7 +20,7 @@
 				document.getElementById(divID).style.display = 'none'; //隐藏用户注册页面
 				//设置id为notClickDiv的层隐藏
 				document.getElementById("notClickDiv").style.display = 'none';
-				window.location.href="${basePath}/index.jsp"; 
+				window.location.href="/index.jsp"; 
 			}
 		}),
 		// 在键盘按下并释放及提交后验证提交表单
